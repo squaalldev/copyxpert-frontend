@@ -7,7 +7,8 @@ class AIService {
         payload.file = fileData;
       }
       
-      const response = await fetch('/api/generate', {
+      // Cambiar esta línea para usar la URL del backend
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -20,16 +21,10 @@ class AIService {
       }
       
       const data = await response.json();
-      return data.text;
+      return data.response;
     } catch (error) {
       console.error('AI Service Error:', error);
       throw error;
     }
   }
-
-  async processFile(file) {
-    return null;
-  }
 }
-
-export default new AIService();
