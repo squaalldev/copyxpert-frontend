@@ -1,22 +1,12 @@
-import { VirtualList } from 'react-window';
-import Message from './Message';
+import React from 'react'
+import { Message } from './Message'
 
-function ChatMessages({ messages }) {
+export function ChatMessages({ messages }) {
   return (
-    <VirtualList
-      height={window.innerHeight - 120}
-      itemCount={messages.length}
-      itemSize={100}
-      width="100%"
-    >
-      {({ index, style }) => (
-        <Message
-          message={messages[index]}
-          style={style}
-        />
-      )}
-    </VirtualList>
-  );
+    <div className="chat-messages">
+      {messages.map((message, index) => (
+        <Message key={index} message={message} />
+      ))}
+    </div>
+  )
 }
-
-export default ChatMessages;
