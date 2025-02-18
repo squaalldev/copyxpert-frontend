@@ -1,30 +1,25 @@
-function MessageReactions({ messageId, reactions, onReaction, activeEmojiPicker, onToggleEmojiPicker }) {
-  const emojiPickerRef = React.useRef(null);
+import React, { useState } from 'react'
+import { EmojiPicker } from './EmojiPicker'
+
+export function MessageReactions({ message }) {
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false)
 
   return (
     <div className="message-reactions">
-      {Object.entries(reactions).map(([emoji, data]) => (
-        <div 
-          key={emoji}
-          className={`reaction ${data.hasReacted ? 'active' : ''}`}
-          onClick={(e) => onReaction(messageId, emoji, e)}
-          title={data.users.join(', ')}
-        >
-          {emoji} {data.count}
-        </div>
-      ))}
-      <span 
-        className="add-reaction"
-        onClick={(e) => onToggleEmojiPicker(messageId, e)}
-      >
-        <i className="ri-add-line"></i>
-      </span>
-      {activeEmojiPicker === messageId && (
-        <EmojiPicker 
-          ref={emojiPickerRef}
-          onSelect={(emoji, e) => onReaction(messageId, emoji, e)}
-        />
+      <button onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+        <i className="ri-emotion-line"></i>
+      </button>
+      {showEmojiPicker && (
+        <EmojiPicker onEmojiSelect={(emoji) => {
+          // Lógica para añadir reacción
+          setShowEmojiPicker(false)
+        }} />
       )}
+      {message.reactions?.map((reaction, index) => (
+        <span key={index} className="reaction">
+          {reaction.emoji}
+        </span>
+      ))}
     </div>
-  );
+  )
 }
