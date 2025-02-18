@@ -1,16 +1,18 @@
-const EMOJI_LIST = ['👍', '❤️', '😄', '😮', '😢', '😡', '🎉', '🙏', '👀', '💯'];
+import React from 'react'
 
-function EmojiPicker({ onSelect, ref }) {
+export function EmojiPicker({ onEmojiSelect }) {
+  const emojis = ['👍', '❤️', '😊', '🎉', '🤔', '👏', '🔥', '🙌', '💯', '✨']
+  
   return (
-    <div className="emoji-picker" ref={ref}>
-      {EMOJI_LIST.map(emoji => (
+    <div className="emoji-picker">
+      {emojis.map((emoji, index) => (
         <button 
-          key={emoji}
-          onClick={(e) => onSelect(emoji, e)}
+          key={index}
+          onClick={() => onEmojiSelect(emoji)}
         >
           {emoji}
         </button>
       ))}
     </div>
-  );
+  )
 }
