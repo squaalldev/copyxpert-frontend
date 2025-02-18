@@ -1,7 +1,6 @@
-// src/components/ChatHeader.jsx
 import React from 'react'
 
-export function ChatHeader() {
+const ChatHeader = () => {
   return (
     <div className="chat-header">
       <img src="/Untitled design (21).png" alt="AI Icon" className="ai-icon" /> 
@@ -9,5 +8,4 @@ export function ChatHeader() {
     </div>
   )
 }
-
-// Repite el proceso para los demás componentes
+export default ChatHeader

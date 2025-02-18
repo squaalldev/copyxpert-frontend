@@ -1,6 +1,7 @@
 import React from 'react'
 
-export function EmojiPicker({ onEmojiSelect }) {
+const EmojiPicker = ({ onEmojiSelect }
+export default EmojiPicker) => {
   const emojis = ['👍', '❤️', '😊', '🎉', '🤔', '👏', '🔥', '🙌', '💯', '✨']
   
   return (
@@ -8,11 +9,16 @@ export function EmojiPicker({ onEmojiSelect }) {
       {emojis.map((emoji, index) => (
         <button 
           key={index}
+export default EmojiPicker
           onClick={() => onEmojiSelect(emoji)}
+export default EmojiPicker
         >
           {emoji}
+export default EmojiPicker
         </button>
       ))}
+export default EmojiPicker
     </div>
   )
 }
+export default EmojiPicker

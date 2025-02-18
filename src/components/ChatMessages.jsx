@@ -1,12 +1,18 @@
 import React from 'react'
-import { Message } from './Message'
+import { Message }
+export default ChatMessages from './Message'
 
-export function ChatMessages({ messages }) {
+const ChatMessages = ({ messages }
+export default ChatMessages) => {
   return (
     <div className="chat-messages">
       {messages.map((message, index) => (
-        <Message key={index} message={message} />
+        <Message key={index}
+export default ChatMessages message={message}
+export default ChatMessages />
       ))}
+export default ChatMessages
     </div>
   )
 }
+export default ChatMessages
