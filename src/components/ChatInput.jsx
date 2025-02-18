@@ -1,39 +1,29 @@
-import React, { useState, useRef }
-export default ChatInput from 'react'
+import React, { useState } from 'react'
+import EmojiPicker from './EmojiPicker'
 
-const ChatInput = ({ newMessage, onMessageChange, onSubmit, fileInputRef }
-export default ChatInput) => {
+const ChatInput = ({ onSendMessage }) => {
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (message.trim()) {
+      onSendMessage(message)
+      setMessage('')
+    }
+  }
+
   return (
-    <div className="chat-input">
-      <form onSubmit={onSubmit}
-export default ChatInput>
-        <input
-          type="text"
-          value={newMessage}
-export default ChatInput
-          onChange={(e) => onMessageChange(e.target.value)}
-export default ChatInput
-          placeholder="Escribe un mensaje..."
-        />
-        <input
-          type="file"
-          ref={fileInputRef}
-export default ChatInput
-          style={{ display: 'none' }
-export default ChatInput}
-export default ChatInput
-          onChange={(e) => onFileChange(e.target.files[0])}
-export default ChatInput
-        />
-        <button type="button" onClick={() => fileInputRef.current.click()}
-export default ChatInput>
-          <i className="ri-attachment-2"></i>
-        </button>
-        <button type="submit">
-          <i className="ri-send-plane-fill"></i>
-        </button>
-      </form>
-    </div>
+    <form className="chat-input" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Type your message..."
+      />
+      <EmojiPicker onEmojiSelect={(emoji) => setMessage(message + emoji)} />
+      <button type="submit">Send</button>
+    </form>
   )
 }
+
 export default ChatInput

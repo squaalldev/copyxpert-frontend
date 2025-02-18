@@ -1,28 +1,16 @@
 import React from 'react'
-import { MessageReactions }
-export default Message from './MessageReactions'
+import MessageReactions from './MessageReactions'
 
-const Message = ({ message }
-export default Message) => {
+const Message = ({ message }) => {
   return (
-    <div className={`message ${message.isAI ? 'ai' : 'user'}
-export default Message`}
-export default Message>
+    <div className={`message ${message.isAI ? 'ai' : 'user'}`}>
       <div className="message-content">
-        <div className="message-text">{message.content}
-export default Message</div>
-        <MessageReactions message={message}
-export default Message />
-      </div>
-      <div className="message-info">
-        <span className="message-username">{message.username}
-export default Message</span>
-        <span className="message-time">
-          {new Date(message.created_at).toLocaleTimeString()}
-export default Message
-        </span>
+        <div className="username">{message.username}</div>
+        <div className="text">{message.response}</div>
+        <MessageReactions message={message} />
       </div>
     </div>
   )
 }
+
 export default Message
