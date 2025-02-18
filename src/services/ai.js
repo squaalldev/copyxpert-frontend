@@ -26,6 +26,10 @@ class AIService {
       throw error
     }
   }
+
+  detectLanguage(text) {
+    return /[áéíóúñ¿¡]/i.test(text)
+  }
 }
 
 export const aiService = new AIService()
